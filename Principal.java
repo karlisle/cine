@@ -37,7 +37,7 @@ class Operaciones {
                          cont++;
                          }     
                      }
-              System.out.println("El número ingresado tiene : "+cont+"   cifras \n");
+              System.out.println("El núººmero ingresado tiene : "+cont+"   cifras \n");
    
             }
    

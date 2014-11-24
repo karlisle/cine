@@ -59,22 +59,35 @@ public class cine
 		System.out.println("|-- -S/s- Para salir    ----------------------------------------------|");
 		System.out.println(" ____________________________________________________________________");
 
-		String opcion = "";							// Variable que almacenara la selección del usuario.
-
-		Scanner ingreso = new Scanner(System.in);			// Creamou una instacia de Scanner, llamada 'ingreso'
 		
 		/*
 		Con este ciclo que sepide indefinidamente, hasta que se le indique que debe terminar
 		nos aseguramos que el programa este funcionando y 	
 		*/
-		while (opcion != "S" || opcion != "s") 
+
+		Peliculas pelicula = new Peliculas();				// Instancioamos un objeto de la clase Peliculas, paro poder hacer uso de 
+										// sus metodos.
+
+		int opcion ;							// Variable que almacenara la selección del usuario.
+
+		Scanner entrada = new Scanner(System.in);			// Creamou una instacia de Scanner, llamada 'ingreso'
+		
+		opcion = entrada.nextInt();					// Se lee la selcción del usuario y se guarda en 'opcion'
+
+		/*
+		Comenzamos a comparar las opciones,  y de acuerdo al caso se llama a uno u otro metodo de la clase
+		Peliculas()
+		*/
+		if (opcion == 1) 
 		{
-			if (opcion == "s" || opcion == "e") 
-			{
-				break;				
-			}
-			
+			System.out.println("Ha seleccionado la opcion: " + opcion);
 		}
+		else if( opcion == 2)
+		{
+			System.out.println("Ha seleccionado la opcion: " + opcion);
+
+		}
+		
 
 
 	}
