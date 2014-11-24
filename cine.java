@@ -88,7 +88,8 @@ class Peliculas
 		{
 			System.out.println("Las mejores peliculas del momento!");
 			
-			System.out.println("Peliculas de estreno:")
+			System.out.println("Peliculas de estreno:");
+			System.out.println("Seleccione del menú, alguna opción:");
 
 		}
 	}
