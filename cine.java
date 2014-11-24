@@ -121,8 +121,29 @@ class Peliculas
 			System.out.println("Seleccione del menú, alguna opción:");
 
 
-			String estrenos = leer("estrenos.txt");
-			System.out.println(estrenos);
+			ArrayList estrenos = leer("estrenos.txt");					// Llamamos al metodo 'leer()', le pasamos como parametro el nombre del archivo
+													// y almacenamos el valor retornado en  el arrayList estrenos
+
+
+			/*
+			Comprobamos que el arrayList  'estrenos' contenga elementos, 
+			*/
+			
+			if (estrenos == null) 								// Preguntamos si el array está vacio
+			{
+				System.out.println("No hay estrenos actualmente!!");			// Si esta vacio, quiere decir que no hay estrenos que mostrar. 
+
+			}
+			else 										// Si no está vacio, entonces mostramos un menú.
+													// que construiremos a base de los elementos que tenga estrenos
+			{
+				System.out.println("Nuevas peliculas, nuevas emociones!!\n\n");
+				System.out.println("Seleccione una del siguiente menú:");
+
+				int numElementos = estrenos.size();
+				System.out.println("\n\n Existen "+ numElementos + " pelicula de estreno");
+
+			}
 
 
 
@@ -169,7 +190,7 @@ class Peliculas
 		a cada archivo segun se requiera.
 		*/
 
-		public String leer(String nombre)
+		public ArrayList leer(String nombre)
 		{
 			/*
 			Por medio de la siguiente estructura manejamos el archovo en cuestion, son el 'try' tratamos de leer el archivo
@@ -189,6 +210,11 @@ class Peliculas
 				
 				String l = " ";								// Es esta variable guardaremos todo lo que tenga el archivo
 
+				ArrayList<String> pelisEstreno = new ArrayList<String>();		// Declaramos un obejeto de ArrayList, de tipo String.
+
+
+
+
 				String aux = " ";
 
 				/*
@@ -198,31 +224,31 @@ class Peliculas
 				while (true) 
 				{
 					aux = br.readLine();
+					//System.out.println(aux);
+					
 					if (aux != null)
 					{
-						l = l + aux + "\n";					// Si la variable aux tiene datos, se almacenan en la va rable l, caso contrario es que ya se ha leido todo.
+						//l = l + aux + "\n";					// Si la variable aux tiene datos, se almacenan en la va rable l, caso contrario es que ya se ha leido todo.
+						pelisEstreno.add(aux);					//Agregamos lo que tenga ene ste momento 'aux'
 					}
 					else
 					{
 						break;							// Si aux es nula o no contiene nada, simpemente terminamos el ciclo while
 					}
+					
 				}
 
 				br.close();								// Cerramos el bufer donde se recopilaban los datos
 				lectorArchivo.close();							//  Cerramos el archivo.
-				return l;								// Regresamos el contenido de la variable 'l', a donde sea que sehaya invocado.
+				//return l;								// Regresamos el contenido de la variable 'l', a donde sea que sehaya invocado.
+				return pelisEstreno;							// Retornamos  el valor de pelisEstreno al metodo que lo invoco	
 			}
 			catch(IOException e)
 			{
 				System.out.println("Error: " + e.getMessage());
 			}
 			return null;
-
-
 		}
-
-
-		
 
 		/*
 		Con este metodo limpiamos la pantalla cada que se llama al metodo
