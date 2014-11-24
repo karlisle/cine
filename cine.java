@@ -87,8 +87,6 @@ public class cine
 			System.out.println("Ha seleccionado la opcion: " + opcion);
 
 		}
-		
-
 
 	}
 }
