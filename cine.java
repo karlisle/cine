@@ -39,54 +39,16 @@ public class cine
 		System.out.println("\t###################################");
 		System.out.println("\t# Seleccione una opción del menú:#");
 	
-
-
-		// Creamos un menú, donde se listen las opciones disponibles :)!
-		System.out.println(" ____________________________________________________________________");
-		System.out.println("|------------------------------  Menú --------------------------------|");
-		System.out.println("|-- -1-  Ver Estrenos ------------------------------------------------|");
-		System.out.println("|-- -2-  Ver Cartelara general----------------------------------------|");
-		System.out.println("|-- -3-  Comprar botanas ---------------------------------------------|");
-		System.out.println("|---------------------------------------------------------------------|");
-		System.out.println("|---------------------------------------------------------------------|");
-		System.out.println("|---------------------------------------------------------------------|");
-		System.out.println("|---------------------------------------------------------------------|");
-		System.out.println("|---------------------------------------------------------------------|");
-		System.out.println("|---------------------------------------------------------------------|");
-		System.out.println("|---------------------------------------------------------------------|");
-		System.out.println("|---------------------------------------------------------------------|");
-		System.out.println("|---------------------------------------------------------------------|");
-		System.out.println("|-- -S/s- Para salir    ----------------------------------------------|");
-		System.out.println(" ____________________________________________________________________");
-
-		
 		/*
 		Con este ciclo que sepide indefinidamente, hasta que se le indique que debe terminar
 		nos aseguramos que el programa este funcionando y 	
 		*/
 
 		Peliculas pelicula = new Peliculas();				// Instancioamos un objeto de la clase Peliculas, paro poder hacer uso de 
-										// sus metodos.
 
-		int opcion ;							// Variable que almacenara la selección del usuario.
+		pelicula.menuSeleccion();					// Por medio del objeto 'pelicula', llamamos al metodo menúSeleccion de la 
+										// clase Peliculas
 
-		Scanner entrada = new Scanner(System.in);			// Creamou una instacia de Scanner, llamada 'ingreso'
-		
-		opcion = entrada.nextInt();					// Se lee la selcción del usuario y se guarda en 'opcion'
-
-		/*
-		Comenzamos a comparar las opciones,  y de acuerdo al caso se llama a uno u otro metodo de la clase
-		Peliculas()
-		*/
-		if (opcion == 1) 
-		{
-			System.out.println("Ha seleccionado la opcion: " + opcion);
-		}
-		else if( opcion == 2)
-		{
-			System.out.println("Ha seleccionado la opcion: " + opcion);
-
-		}
 
 	}
 }
@@ -95,12 +57,93 @@ public class cine
 
 class Peliculas
 	{
-		void menuPeliculas()
+		void menuSeleccion()
+		{
+
+			// Creamos un menú, donde se listen las opciones disponibles :)!
+			System.out.println(" ____________________________________________________________________");
+			System.out.println("|------------------------------  Menú --------------------------------|");
+			System.out.println("|-- -1-  Ver Estrenos ------------------------------------------------|");
+			System.out.println("|-- -2-  Ver Cartelara general----------------------------------------|");
+			System.out.println("|-- -3-  Comprar botanas ---------------------------------------------|");
+			System.out.println("|---------------------------------------------------------------------|");
+			System.out.println("|---------------------------------------------------------------------|");
+			System.out.println("|---------------------------------------------------------------------|");
+			System.out.println("|---------------------------------------------------------------------|");
+			System.out.println("|---------------------------------------------------------------------|");
+			System.out.println("|---------------------------------------------------------------------|");
+			System.out.println("|---------------------------------------------------------------------|");
+			System.out.println("|---------------------------------------------------------------------|");
+			System.out.println("|---------------------------------------------------------------------|");
+			System.out.println("|-- -S/s- Para salir    ----------------------------------------------|");
+			System.out.println(" ____________________________________________________________________");
+
+			int opcion ;							// Variable que almacenara la selección del usuario.
+
+			Scanner entrada = new Scanner(System.in);			// Creamou una instacia de Scanner, llamada 'ingreso'
+			
+			opcion = entrada.nextInt();					// Se lee la selcción del usuario y se guarda en 'opcion'
+
+			/*
+			Comenzamos a comparar las opciones,  y de acuerdo al caso se llama a uno u otro metodo de la clase
+			Peliculas()
+			*/
+			if (opcion == 1) 
+			{
+				System.out.println("Ha seleccionado la opcion: " + opcion);
+				carteleraEstrenos();							// Llamos al metodo cartelraEstrenos
+			}
+
+			else if( opcion == 2)
+			{
+				System.out.println("Ha seleccionado la opcion: " + opcion);
+				carteleraGeneral();							// Llamamos al metodo carteleraGeneral
+
+
+			}
+
+		}
+
+		/* 
+		Metodo con el cual se manejara los elementos de las peliculas de estreno
+		*/
+
+		void carteleraEstrenos()
 		{
 			System.out.println("Las mejores peliculas del momento!");
 			
 			System.out.println("Peliculas de estreno:");
 			System.out.println("Seleccione del menú, alguna opción:");
 
+			limpiarPantalla();
+			menuSeleccion();								// Invocamos de nuevo al metodo menuGeneral
+		}
+
+		/* 
+		Metodo con el cual se manejara los elementos de las peliculas que esten en cartelera,
+		no solo las de estreno.
+		*/
+
+		void carteleraGeneral()
+		{
+			System.out.println("\t Cartelera general!");
+			System.out.println("\t Seleccione del menú, alguna pelicula");
+
+			limpiarPantalla();
+			menuSeleccion();								// Invocamos de nuevo al metodo menuGeneral
+		}
+
+		/*
+		Con este metodo limpiamos la pantalla cada que se llama al metodo
+		menuGeneral, o cualquier otro.
+		Por cuestiones esteticas es recomendable.
+		*/
+
+		void limpiarPantalla()
+		{
+			for (int i = 0; i <=50; i++ ) 
+			{
+				System.out.println("\n");
+			}
 		}
 	}
