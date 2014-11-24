@@ -20,7 +20,7 @@ cumplan los siguientes puntos:
 */
 
 import java.util.*;						// Importamos la libreria util del core de java
-
+import java.io.*;
 /* 
 Clase principal, dentro de ella crearemos las clases y metodos necesarios para 
 cumplir con las especificaciones.
@@ -110,10 +110,21 @@ class Peliculas
 
 		void carteleraEstrenos()
 		{
+
+			//String estrenos[][] = new String[10][2];					// Arreglo en el que pondemos las 
+
+			
+
 			System.out.println("Las mejores peliculas del momento!");
 			
 			System.out.println("Peliculas de estreno:");
 			System.out.println("Seleccione del menú, alguna opción:");
+
+
+			String estrenos = leer("estrenos.txt");
+			System.out.println(estrenos);
+
+
 
 			limpiarPantalla();
 			menuSeleccion();								// Invocamos de nuevo al metodo menuGeneral
@@ -134,14 +145,93 @@ class Peliculas
 		}
 
 		/*
+		Método que nos proporciona el manejo de laspolomitas y sus diferentes opciones
+		*/
+		void palomitas()
+		{
+			System.out.println("Ahora esta en la seccion de palomitas \n elija su paquete!");
+		}
+
+		/*
+		Método p que permite controlar la venta de dulces.
+		*/
+
+		void dulces()
+		{
+			System.out.println("Los dulces hacen del cine algo mas dulce!");
+
+		}
+
+		/* 
+		Este metodo ermite leer un archivo, es generico (plomorfico), por lo cual lo usaremos para leer cualquier tipo de archivo 
+		que nececitemos.
+		La idea es tener en un archivo externo, las peliculas y su precio, los consumibles y sus precios, para que de esta forma solo se llame 
+		a cada archivo segun se requiera.
+		*/
+
+		public String leer(String nombre)
+		{
+			/*
+			Por medio de la siguiente estructura manejamos el archovo en cuestion, son el 'try' tratamos de leer el archivo
+			y en caso de fallar, erroja un mensaje de error.
+			*/
+			try
+			{
+				File f;
+				FileReader lectorArchivo;;
+
+				f = new File(nombre);					   		// Creamos el archivo que se ha de leer
+
+				lectorArchivo = new FileReader(f);					// Creamos un objeto FIleReader que abrira el flujo des stream de 
+													// datos para realizar la lectura
+
+				BufferedReader br = new BufferedReader(lectorArchivo);		// Creamos un bufer, para recopilar los datos que erroje lectorArchivo
+				
+				String l = " ";								// Es esta variable guardaremos todo lo que tenga el archivo
+
+				String aux = " ";
+
+				/*
+				Con este ciclo, repetimos la lectura, pues cada archivo se lee una linea
+				a la vez
+				*/
+				while (true) 
+				{
+					aux = br.readLine();
+					if (aux != null)
+					{
+						l = l + aux + "\n";					// Si la variable aux tiene datos, se almacenan en la va rable l, caso contrario es que ya se ha leido todo.
+					}
+					else
+					{
+						break;							// Si aux es nula o no contiene nada, simpemente terminamos el ciclo while
+					}
+				}
+
+				br.close();								// Cerramos el bufer donde se recopilaban los datos
+				lectorArchivo.close();							//  Cerramos el archivo.
+				return l;								// Regresamos el contenido de la variable 'l', a donde sea que sehaya invocado.
+			}
+			catch(IOException e)
+			{
+				System.out.println("Error: " + e.getMessage());
+			}
+			return null;
+
+
+		}
+
+
+		
+
+		/*
 		Con este metodo limpiamos la pantalla cada que se llama al metodo
 		menuGeneral, o cualquier otro.
 		Por cuestiones esteticas es recomendable.
 		*/
-
 		void limpiarPantalla()
 		{
-			for (int i = 0; i <=50; i++ ) 
+			for (int i = 0; i <=5; i++ ) 
 			{
 				System.out.println("\n");
 			}
